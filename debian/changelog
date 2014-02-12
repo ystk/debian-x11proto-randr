@@ -1,3 +1,29 @@
+x11proto-randr (1.3.2-2) unstable; urgency=low
+
+  * Mark x11proto-randr-dev Multi-Arch: foreign.
+  * Install .pc file to /usr/share/pkgconfig instead of
+    /usr/lib/pkgconfig
+
+ -- Steve Langasek <vorlon@debian.org>  Sat, 02 Jul 2011 01:17:08 +0100
+
+x11proto-randr (1.3.2-1) unstable; urgency=low
+
+  [ Julien Cristau ]
+  * Rename the build directory to not include DEB_BUILD_GNU_TYPE for no
+    good reason.  Thanks, Colin Watson!
+  * Remove myself from Uploaders
+
+  [ Robert Hooker ]
+  * New upstream release.
+
+  [ Cyril Brulebois ]
+  * Use .install rather than dh_installdocs for the txt documentation.
+  * Switch from --list-missing to --fail-missing for additional safety.
+  * No longer pass --disable-shared, this option is gone.
+  * Add myself to Uploaders.
+
+ -- Cyril Brulebois <kibi@debian.org>  Wed, 03 Nov 2010 01:50:40 +0100
+
 x11proto-randr (1.3.1-1) unstable; urgency=low
 
   [ Timo Aaltonen ]
