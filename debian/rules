@@ -15,34 +15,28 @@ include debian/xsfbs/xsfbs.mk
 autogen: autogen-stamp
 autogen-stamp:
 	dh_testdir
-
 	autoreconf -vfi
-	touch autogen-stamp
+	>$@
 
 .PHONY: configure
 configure: configure-stamp
 configure-stamp: autogen-stamp
 	dh_testdir
-
 	mkdir -p build
 	cd build && \
 	../configure --prefix=/usr --mandir=\$${prefix}/share/man \
 	             --infodir=\$${prefix}/share/info
-	touch configure-stamp
+	>$@
 
 build: build-stamp
 build-stamp: configure-stamp
 	dh_testdir
-
 	cd build && $(MAKE)
-
-	touch build-stamp
+	>$@
 
 clean:
 	dh_testdir
-	dh_testroot
 	rm -f *-stamp
-
 	rm -f config.cache config.log config.status
 	rm -f */config.cache */config.log */config.status
 	rm -f conftest* */conftest*
@@ -51,7 +45,6 @@ clean:
 	rm -f aclocal.m4 configure install-sh missing
 	rm -f config.guess config.sub
 	rm -f Makefile.in
-
 	dh_clean
 
 install: build
@@ -59,14 +52,12 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-
 	cd build && $(MAKE) DESTDIR=$(CURDIR)/debian/tmp PACKAGE=$(PACKAGE) install
 
 # Build architecture-independent files here.
 binary-indep: build install
 	dh_testdir
 	dh_testroot
-
 	dh_installdocs
 	dh_installman
 	dh_install --sourcedir=debian/tmp --fail-missing
